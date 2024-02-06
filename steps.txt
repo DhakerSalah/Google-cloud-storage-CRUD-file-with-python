@@ -1,0 +1,21 @@
+- Prerequisites
+
+pip install google-cloud-storage
+(put in the command line "pip install -r requirements.txt" to install all library & requirements for this work.)
+
+- Set up the Environment
+
+To access GCS from Python, we need to authenticate our application and set up the necessary credentials.
+To do this, we can create a service account key and download the JSON file containing the credentials.
+If you have already created a service account, skip to Step 2.
+
+1- Open the Google Cloud Console and navigate to the IAM & Admin section.
+2- Click on “Service Accounts” and then click on “Create Service Account”.
+3- Give your service account a name and a description.
+4- Under “Role”, select the appropriate role for your use case.
+For example, if you only need to read files from GCS, select the “Storage Object Viewer” role.
+5- Leave the “JSON” key type selected and click on “Create”.
+
+Once you have created the service account, download the JSON key file and save it in a secure location.
+Finally put the name of json file in "app.py" file in this line :
+storage_client = storage.Client.from_service_account_json(os.path.abspath("filename.json"))
